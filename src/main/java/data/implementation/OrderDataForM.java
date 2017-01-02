@@ -25,7 +25,7 @@ public class OrderDataForM implements OrderDataService ,Serializable{
     private OrderChanger changerForH = new OrderChanger("OrderDataForHotel.xls");
     private Workbook book;
     private Sheet sheet;
-    private static final long serialVersionUID = -6833877079313718314L;   //序列号
+    private static final long serialVersionUID = -6833877079313718314L;                        //序列号
 
     /**
      * 增加订单

@@ -109,8 +109,8 @@ public class CreditData implements CreditDataService {
 		createSheet();
 		int col = 0;
 		int row = hash(memberID);
-		if(row>=sheet.getRows()) return new ArrayList<>();
-		if(!sheet.getCell(col, row).getContents().equals(memberID)) return null;  //This member does not exist;
+		if(row>=sheet.getRows()) return null;
+		if(!sheet.getCell(col, row).getContents().equals(memberID)) return null;           //This member does not exist;
 		ArrayList<CreditChangePO> result = new ArrayList<CreditChangePO>();
 		col += 2;
 		for (int i = 0; i < sheet.getRow(row).length-2; i+=dateSize) {
