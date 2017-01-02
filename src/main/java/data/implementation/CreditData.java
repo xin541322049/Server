@@ -147,6 +147,12 @@ public class CreditData implements CreditDataService {
 			e.printStackTrace();
 		}
 
+		try {
+			wBook.write();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 		close();
 		return true;
 	}
@@ -195,6 +201,7 @@ public class CreditData implements CreditDataService {
 			case 1: return new CreditChangePO(changeDate, orderID, OrderAction.AbnormalOrder, change, result);
 			case 2: return new CreditChangePO(changeDate, orderID, OrderAction.CancelOrder, change, result);
 			case 3: return new CreditChangePO(changeDate, orderID, OrderAction.RechargeCredit, change, result);
+			case 4: return new CreditChangePO(changeDate, orderID, OrderAction.CancelAbnormal, change, result);
 		}
 		return null;
 	}

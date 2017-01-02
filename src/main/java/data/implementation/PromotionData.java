@@ -420,6 +420,7 @@ public class PromotionData implements PromotionDataService {
 		double neededPrice = 0;
 		double reducePrice = 0;
 		String promotionID = sheet.getCell(col, row).getContents();
+		if(promotionID.equals("-1")) return null;
 		col++;
 		String promotionName = sheet.getCell(col, row).getContents();
 		col++;

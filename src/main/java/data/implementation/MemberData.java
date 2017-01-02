@@ -196,12 +196,15 @@ public class MemberData implements MemberDataService {
 			col+=dataSize;
 		}
 		col++;
-		Label label = new Label(col,row,Encryption.convertMD5(member.getPassword()));
-		try {
-			wSheet.addCell(label);
-		} catch (WriteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		Label label;
+		if(member.getPassword()!=null){
+			label = new Label(col,row,Encryption.convertMD5(member.getPassword()));
+			try {
+				wSheet.addCell(label);
+			} catch (WriteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		col++;
 		label = new Label(col,row,Encryption.convertMD5(member.getName()));
@@ -246,8 +249,16 @@ public class MemberData implements MemberDataService {
 			e.printStackTrace();
 		}
 		col++;
+		int ty=0;
+		if(member.getMemberType()==null){
+			ty = (int)((NumberCell)wSheet.getCell(col, row)).getValue();
+		}
+		else{
+			ty = member.getMemberType().getValue();
+		}
+
 		col++;
-		switch(member.getMemberType().getValue()){
+		switch(ty){
 			case 0: {
 				long dateHelper = member.getBirthday().getTime();
 				Number birthDay = new Number(col,row, dateHelper);
