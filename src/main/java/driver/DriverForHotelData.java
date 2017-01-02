@@ -29,9 +29,9 @@ public class DriverForHotelData {
 //		driver.testGetHotelByID("000001");
 //		driver.testGetHotelByName("JavaHotel");
 //		System.out.println(driver.testGetHotelByID("000101"));
-		System.out.println(driver.testAdd(new HotelPO(driver.testGetID(),"inlinefunction","CppHotel", "上海市", "徐家汇", "helloworld大道",5, 4.8,"健身房、游泳池、spa","是一家专门针对有梦想的程序员的酒店"
+		System.out.println(driver.testUpdate(new HotelPO("000004","inlinefunction","CppHotel++", "南京市", "新街口", "helloworld大道",4, 4.5,"健身房、游泳池、spa","是一家专门针对有梦想的程序员的酒店"
 				,"vs", "13151522158",enterprise, false)));
-		System.out.println(driver.testGetHotelByName("CppHotel"));
+		System.out.println(driver.testGetHotelByName("CppHotel++"));
 	}
 
 	/**
