@@ -119,7 +119,15 @@ public class SalerData implements SalerDataService {
 			col+=dataSize;
 		}
 		col++;
-		Label password = new Label(col, row, Encryption.convertMD5(saler.getPassword()));
+		if(saler.getPassword()!=null){
+			Label label = new Label(col,row,Encryption.convertMD5(saler.getPassword()));
+			try {
+				wSheet.addCell(label);
+			} catch (WriteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		col++;
 		Label name = new Label(col, row, Encryption.convertMD5(saler.getName()));
 		col++;
@@ -129,7 +137,7 @@ public class SalerData implements SalerDataService {
 		if(saler.isLoged()) log = 1;
 		jxl.write.Number isLogged = new Number(col, row, log);
 		try {
-			wSheet.addCell(password);
+
 			wSheet.addCell(name);
 			wSheet.addCell(tel);
 			wSheet.addCell(isLogged);
