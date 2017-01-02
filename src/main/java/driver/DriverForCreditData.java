@@ -17,7 +17,7 @@ public class DriverForCreditData {
 
 	public static void main(String[] args){
 		DriverForCreditData driver = new DriverForCreditData();
-//		Date day = new Date();
+		Date day = new Date();
 //		day.setYear(2016-1900);
 //		day.setMonth(12);
 //		day.setDate(20);
@@ -33,9 +33,9 @@ public class DriverForCreditData {
 //		driver.testAdd("00000001", new CreditChangePO(day,"160515182334", OrderAction.ExecuteOrder, 200, 300));
 //		day.setDate(8);
 //		day.setMonth(10);
-//		driver.testAdd("00000001", new CreditChangePO(day,"161108201941", OrderAction.AbnormalOrder, -200, 100));
-		driver.testGetChanges("00000000");
-		driver.testGetCredit("00000001");
+		driver.testAdd("00000004", new CreditChangePO(day,"161108201941", OrderAction.AbnormalOrder, -200, -100));
+//		driver.testGetChanges("00000000");
+//		driver.testGetCredit("00000001");
 	}
 
 	public boolean testAdd(String memberID, CreditChangePO credit){

@@ -32,7 +32,9 @@ public class DriverForMemberData {
 //		System.out.println(driver.testDelete("00000002"));
 //		System.out.println(driver.testUpdate(new MemberPO("00000000","xinxinpassword", "张新悦",  "15205153967", 7, 0.5, MemberType.Orinary, getDate("02-11-1997"),"", false)));
 //		driver.testUpdate(member1);
-		driver.testGet("00000003");
+		MemberPO member2 = new MemberPO(driver.testGetID(), "badguy", "程序员", "13151530838", 2, 0.6, MemberType.Orinary, getDate("03-03-1997"),"", false);
+		System.out.println(driver.testAdd(member2));
+		driver.testGet("00000004");
 	}
 
 	public boolean testAdd(MemberPO member){
