@@ -15,6 +15,8 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
+ * 搜索酒店数据的类
+ * @author 张新悦
  * Created by apple on 2016/12/5.
  */
 public class SearchData implements SearchDataService {
@@ -24,6 +26,11 @@ public class SearchData implements SearchDataService {
 	private Workbook book;
 	private Sheet sheet;
 
+	/**
+	 * 得到城市列表
+	 * @return
+	 * @throws RemoteException
+	 */
 	@Override
 	public ArrayList<String> getCityList() throws RemoteException {
 		Workbook addressBook = null;
@@ -44,6 +51,12 @@ public class SearchData implements SearchDataService {
 		return cities;
 	}
 
+	/**
+	 * 得到城市商圈列表
+	 * @param city
+	 * @return
+	 * @throws RemoteException
+	 */
 	@Override
 	public ArrayList<String> getDistrictList(String city) throws RemoteException {
 		Workbook addressBook = null;
@@ -66,7 +79,7 @@ public class SearchData implements SearchDataService {
 	}
 
 	/**
-	 *
+	 * 得到符合地址搜索条件的酒店信息列表
 	 * @param city
 	 * @param district
 	 * @return
@@ -92,7 +105,7 @@ public class SearchData implements SearchDataService {
 	}
 
 	/**
-	 *
+	 * 得到符合评分搜索条件的酒店信息列表
 	 * @param lowScore
 	 * @param highScore
 	 * @param city
@@ -113,7 +126,7 @@ public class SearchData implements SearchDataService {
 	}
 
 	/**
-	 *
+	 * 得到符合星级搜索条件的酒店信息列表
 	 * @param level
 	 * @param city
 	 * @param district
@@ -138,7 +151,7 @@ public class SearchData implements SearchDataService {
 	}
 
 	/**
-	 *
+	 * 得到符合价格搜索条件的酒店信息列表
 	 * @param lowPrice
 	 * @param highPrice
 	 * @param city
@@ -159,7 +172,7 @@ public class SearchData implements SearchDataService {
 		return result;
 	}
 	/**
-	 *
+	 * 关闭输入流
 	 */
 	private void close(){
 		book.close();
@@ -167,7 +180,7 @@ public class SearchData implements SearchDataService {
 
 
 	/**
-	 *
+	 * 得到哈希值
 	 * @param hotelScope
 	 * @return
 	 */
@@ -179,7 +192,7 @@ public class SearchData implements SearchDataService {
 	}
 
 	/**
-	 *
+	 * 得到某个酒店
 	 * @param col
 	 * @param row
 	 * @return

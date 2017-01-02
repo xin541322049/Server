@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 /**
+ * 管理会员等级制度数据的类
+ * @author 张新悦
  * Created by apple on 2016/12/15.
  */
 public class RankDataTest {

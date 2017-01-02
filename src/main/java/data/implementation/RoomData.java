@@ -19,6 +19,10 @@ import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import po.RoomPO;
 
+/**
+ * 用于管理房间数据的类
+ * @author 张新悦
+ */
 public class RoomData implements RoomDataService {
 
 	private int dataSize = 6;
@@ -31,22 +35,11 @@ public class RoomData implements RoomDataService {
 	private static final long serialVersionUID = -6833877079313718314L;
 	
 	public RoomData() {
-		// TODO Auto-generated constructor stub
-//		try {
-//			try {
-//				book = Workbook.getWorkbook(new File(sourceFile));
-//			} catch (BiffException e) {
-//				e.printStackTrace();
-//			}
-//			wBook = Workbook.createWorkbook(new File(sourceFile),book);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+
 	}
 
 	/**
-	 *
+	 * 将数据写入文件
 	 */
 	private void write(){
 		try {
@@ -93,7 +86,7 @@ public class RoomData implements RoomDataService {
 	}
 
 	/**
-	 *
+	 * 根据房间号得到房间
 	 * @param row
 	 * @param roomNUM
 	 * @return
@@ -112,6 +105,12 @@ public class RoomData implements RoomDataService {
 		return null;
 	}
 
+	/**
+	 * 得到某个房间
+	 * @param col
+	 * @param row
+	 * @return
+	 */
 	private RoomPO getRoomByCol(int col, int row){
 		String roomNUM = sheet.getCell(col, row).getContents();
 		col++;
@@ -141,6 +140,12 @@ public class RoomData implements RoomDataService {
 		return null;
 	}
 
+	/**
+	 * 更新房间信息
+	 * @param row
+	 * @param room
+	 * @return
+	 */
 	private boolean updateRoom(int row, RoomPO room) {
 		// TODO Auto-generated method stub
 		int col=0;
@@ -183,7 +188,12 @@ public class RoomData implements RoomDataService {
 		return true;
 	}
 
-	//@Override
+	/**
+	 * 增加房间
+	 * @param row
+	 * @param room
+	 * @return
+	 */
 	private boolean addRoom(int row, RoomPO room) {
 		// TODO Auto-generated method stub
 		int col=0;
@@ -226,7 +236,12 @@ public class RoomData implements RoomDataService {
 		return true;
 	}
 
-	//@Override
+	/**
+	 * 删除房间
+	 * @param row
+	 * @param roomNUM
+	 * @return
+	 */
 	private boolean deleteRoom(int row, String roomNUM) {
 		// TODO Auto-generated method stub
 		int col=0;
@@ -247,7 +262,7 @@ public class RoomData implements RoomDataService {
 	}
 
 	/**
-	 *
+	 * 创建文件IO流
 	 * @param hotelID
 	 */
 	private void setwSheet(String hotelID){
@@ -261,7 +276,7 @@ public class RoomData implements RoomDataService {
 	}
 
 	/**
-	 *
+	 * 关闭文件IO流
 	 */
 	private void close(){
 		write();
@@ -273,6 +288,13 @@ public class RoomData implements RoomDataService {
 		book.close();
 	}
 
+	/**
+	 * 得到房间信息
+	 * @param theDay
+	 * @param roomNUM
+	 * @param hotelID
+	 * @return
+	 */
 	public RoomPO getSingleRoom(Date theDay, String roomNUM, String hotelID) {
 		createSheet();
 		setSheet(hotelID);
@@ -286,6 +308,12 @@ public class RoomData implements RoomDataService {
 		return result;
 	}
 
+	/**
+	 * 增加房间
+	 * @param room
+	 * @param hotelID
+	 * @return
+	 */
 	public boolean addSingleRoom(RoomPO room, String hotelID) {
 		createWritableSheet();
 		setwSheet(hotelID);
@@ -299,6 +327,13 @@ public class RoomData implements RoomDataService {
 		return true;
 	}
 
+	/**
+	 * 更新房间
+	 * @param theDay
+	 * @param room
+	 * @param hotelID
+	 * @return
+	 */
 	public boolean updateSingleRoom(Date theDay, RoomPO room, String hotelID) {
 		createWritableSheet();
 		setwSheet(hotelID);
@@ -310,6 +345,12 @@ public class RoomData implements RoomDataService {
 		return result;
 	}
 
+	/**
+	 * 删除房间
+	 * @param roomNUM
+	 * @param hotelID
+	 * @return
+	 */
 	public boolean deleteSingleRoom(String roomNUM, String hotelID) {
 		createWritableSheet();
 		setwSheet(hotelID);
@@ -323,6 +364,13 @@ public class RoomData implements RoomDataService {
 		return true;
 	}
 
+	/**
+	 * 根据日期和房间类型得到房间信息列表
+	 * @param day
+	 * @param roomType
+	 * @param hotelID
+	 * @return
+	 */
 	public ArrayList<RoomPO> getRoomsByTypeDate(Date day, RoomType roomType, String hotelID) {
 		ArrayList<RoomPO> temp = getRoomsByDate(day, hotelID);
 		ArrayList<RoomPO> result = new ArrayList<>();
@@ -336,6 +384,13 @@ public class RoomData implements RoomDataService {
 		return result;
 	}
 
+	/**
+	 * 根据日期房间名称得到房间信息列表
+	 * @param day
+	 * @param roomName
+	 * @param hotelID
+	 * @return
+	 */
 	public ArrayList<RoomPO> getRoomsByNameDate(Date day, String roomName, String hotelID) {
 		ArrayList<RoomPO> temp = getRoomsByDate(day, hotelID);
 		ArrayList<RoomPO> result = new ArrayList<>();
@@ -349,6 +404,12 @@ public class RoomData implements RoomDataService {
 		return result;
 	}
 
+	/**
+	 * 得到某天的房间信息
+	 * @param day
+	 * @param hotelID
+	 * @return
+	 */
 	public ArrayList<RoomPO> getRoomsByDate(Date day, String hotelID) {
 		createSheet();
 		setSheet(hotelID);
@@ -369,6 +430,13 @@ public class RoomData implements RoomDataService {
 		return result;
 	}
 
+	/**
+	 * 预定房间
+	 * @param day
+	 * @param roomNUM
+	 * @param hotelID
+	 * @return
+	 */
 	public boolean reserveSingleRoom(Date day, String roomNUM, String hotelID) {
 		createWritableSheet();
 		setwSheet(hotelID);
@@ -400,6 +468,13 @@ public class RoomData implements RoomDataService {
 		return true;
 	}
 
+	/**
+	 * checkin房间信息
+	 * @param day
+	 * @param roomNUM
+	 * @param hotelID
+	 * @return
+	 */
 	public boolean checkIn(Date day, String roomNUM, String hotelID) {
 		createWritableSheet();
 		setwSheet(hotelID);
@@ -443,6 +518,13 @@ public class RoomData implements RoomDataService {
 		return true;
 	}
 
+	/**
+	 * checkout房间信息
+	 * @param day
+	 * @param roomNUM
+	 * @param hotelID
+	 * @return
+	 */
 	public boolean checkOut(Date day, String roomNUM, String hotelID) {
 		createWritableSheet();
 		setwSheet(hotelID);
@@ -487,7 +569,7 @@ public class RoomData implements RoomDataService {
 	}
 
 	/**
-	 *
+	 * 该酒店是否有在搜索价格间的房间
 	 * @param low
 	 * @param high
 	 * @param hotelID

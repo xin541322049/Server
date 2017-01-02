@@ -17,7 +17,7 @@ import po.MemberPO;
 import other.MemberType;
 
 /**
- * 
+ * 用于管理会员信息的类
  * @author 张新悦
  *
  */
@@ -31,24 +31,12 @@ public class MemberData implements MemberDataService {
 	WritableWorkbook wBook;
 	WritableSheet wSheet;
 	public MemberData() {
-		 //TODO Auto-generated constructor stub
-//		try {
-//			try {
-//				book=Workbook.getWorkbook(new File(sourceFile));
-//				wBook = Workbook.createWorkbook(new File(sourceFile),book);
-//				wSheet = wBook.getSheet(0);
-//			} catch (BiffException e) {
-//				e.printStackTrace();
-//			}
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+
 	}
 
 
 	/**
-	 *
+	 * 增加会员信息
 	 * @param member
 	 * @return
 	 */
@@ -159,7 +147,7 @@ public class MemberData implements MemberDataService {
 	}
 
 	/**
-	 *
+	 * 删除会员信息
 	 * @param memberID
 	 * @return
 	 */
@@ -190,7 +178,7 @@ public class MemberData implements MemberDataService {
 	}
 
 	/**
-	 *
+	 * 更新会员信息
 	 * @param member
 	 * @return
 	 */
@@ -287,7 +275,7 @@ public class MemberData implements MemberDataService {
 	}
 
 	/**
-	 *
+	 * 根据ID得到会员信息
 	 * @param ID
 	 * @return
 	 */
@@ -343,7 +331,7 @@ public class MemberData implements MemberDataService {
 	}
 
 	/**
-	 *
+	 * 得到可用的新增会员信息
 	 * @return
 	 */
 	public String getAvailableMemberID() {
@@ -358,7 +346,7 @@ public class MemberData implements MemberDataService {
 	}
 
 	/**
-	 *
+	 * 得到哈希值
 	 * @param ID
 	 * @return the result of hash
 	 */
@@ -369,7 +357,7 @@ public class MemberData implements MemberDataService {
 	}
 
 	/**
-	 *
+	 * 关闭文档IO流
 	 */
 	private void close(){
 		write();
@@ -382,7 +370,7 @@ public class MemberData implements MemberDataService {
 	}
 
 	/**
-	 *
+	 * 写入文件
 	 */
 	private void write(){
 		try {

@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
+ * 用于管理网站管理人员信息的类
  * Created by apple on 2016/12/1.
  * @author 张新悦
  * @version 2016-12-01
@@ -27,6 +28,11 @@ public class ManagerData implements ManagerDataService {
 	private WritableSheet wSheet;
 	private int dataSize = 5;
 
+	/**
+	 * 更新网站管理人员信息
+	 * @param manager
+	 * @return
+	 */
 	public boolean updateManager(ManagerPO manager) {
 		createWritableSheet();
 		int col = 0;
@@ -58,6 +64,10 @@ public class ManagerData implements ManagerDataService {
 		return true;
 	}
 
+	/**
+	 * 得到网站管理人员信息
+	 * @return
+	 */
 	public ManagerPO getManager() {
 		createSheet();
 		int col = 0;
@@ -78,7 +88,7 @@ public class ManagerData implements ManagerDataService {
 	}
 
 	/**
-	 *
+	 * 关闭文档IO流
 	 */
 	private void close() {
 		try {

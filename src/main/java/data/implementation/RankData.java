@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
+ * 管理会员等级制度数据的类
+ * @author 张新悦
  * Created by apple on 2016/12/3.
  */
 public class RankData implements RankDataService {
@@ -25,6 +27,10 @@ public class RankData implements RankDataService {
 	private WritableWorkbook wBook;
 	private WritableSheet wSheet;
 
+	/**
+	 * 得到信用等级
+	 * @return
+	 */
 	public ArrayList<Double> getCreditList() {
 		createSheet();
 		int col = 0;
@@ -40,6 +46,10 @@ public class RankData implements RankDataService {
 		return result;
 	}
 
+	/**
+	 * 得到折扣等级
+	 * @return
+	 */
 	public ArrayList<Double> getDiscountList() {
 		createSheet();
 		int col = 1;
@@ -55,6 +65,11 @@ public class RankData implements RankDataService {
 		return result;
 	}
 
+	/**
+	 * 跟新信用等级数据
+	 * @param creditList
+	 * @return
+	 */
 	public boolean updateCreditList(ArrayList<Double> creditList) {
 		createWritableSheet();
 		int col = 0;
@@ -72,6 +87,11 @@ public class RankData implements RankDataService {
 		return true;
 	}
 
+	/**
+	 * 更新折扣等级数据
+	 * @param discountList
+	 * @return
+	 */
 	public boolean updateDiscountList(ArrayList<Double> discountList) {
 		createWritableSheet();
 		int col = 1;
@@ -90,7 +110,7 @@ public class RankData implements RankDataService {
 	}
 
 	/**
-	 *
+	 * 关闭文件IO流
 	 */
 	private void close() {
 		try {

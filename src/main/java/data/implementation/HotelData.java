@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
+ * 用于管理酒店数据的类
  * Created by apple on 2016/12/1.
  * @author 张新悦
  * @version 2016-12-01
@@ -31,21 +32,12 @@ public class HotelData implements HotelDataService {
 	private WritableSheet wSheet;
 
 	public HotelData(){
-//		try {
-//			book = Workbook.getWorkbook(new File(sourceFile));
-//			wBook = Workbook.createWorkbook(new File(sourceFile),book);
-//			wSheet = wBook.getSheet(0);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		} catch (BiffException e) {
-//			e.printStackTrace();
-//		}
 
 	}
 
 
 	/**
-	 *
+	 * 增加酒店数据
 	 * @param hotel
 	 * @return
 	 */
@@ -142,7 +134,7 @@ public class HotelData implements HotelDataService {
 	}
 
 	/**
-	 *
+	 * 删除酒店数据
 	 * @param hotelID
 	 * @return
 	 */
@@ -151,17 +143,10 @@ public class HotelData implements HotelDataService {
 		Cell hotelStart = wSheet.findCell(Encryption.convertMD5(hotelID));
 		if(hotelStart==null){
 			close();
-			return false;
+			return false;                                                 //The hotel with ID of hotelID does not exist.
 		}
 		int col = hotelStart.getColumn();
 		int row = hotelStart.getRow();
-//		while(!wSheet.getCell(col, row).getContents().equals(hotelID)){
-//			if(wSheet.getCell(col, row).getContents().equals("")){
-//				close();
-//				return false;                         //The hotel with ID of hotelID does not exist.
-//			}
-//			col+=dataSize;
-//		}
 		for(int i=0;i<dataSize;i++){
 			Label label = new Label(col+i,row,"-1");
 			try {
@@ -200,7 +185,7 @@ public class HotelData implements HotelDataService {
 		int row = hash(hotel.getCity()+hotel.getDistrict());
 		while(!wSheet.getCell(col, row).getContents().equals(Encryption.convertMD5(hotel.getUserID()))){
 			if(wSheet.getCell(col, row).getContents().equals("")){
-				close();                         //The hotel with ID of hotelID does not exist.
+				close();                                                  //The hotel with ID of hotelID does not exist.
 				return false;
 			}
 			col+=dataSize;
@@ -262,7 +247,7 @@ public class HotelData implements HotelDataService {
 	}
 
 	/**
-	 *
+	 * 根据ID查找酒店信息
 	 * @param hotelID
 	 * @return
 	 */
@@ -278,7 +263,7 @@ public class HotelData implements HotelDataService {
 	}
 
 	/**
-	 *
+	 * 根据酒店名称查找酒店信息
 	 * @param hotelName
 	 * @return
 	 */
@@ -294,7 +279,7 @@ public class HotelData implements HotelDataService {
 	}
 
 	/**
-	 *
+	 * 得到可用的新增酒店的ID
 	 * @return
 	 */
 	public String getAvailableHotelID() {
@@ -311,7 +296,7 @@ public class HotelData implements HotelDataService {
 	}
 
 	/**
-	 *
+	 * 关闭excel文件IO流
 	 */
 	private void close(){
 		write();
@@ -325,7 +310,7 @@ public class HotelData implements HotelDataService {
 
 
 	/**
-	 *
+	 * 写入文件
 	 */
 	private void write(){
 		try {
@@ -336,7 +321,7 @@ public class HotelData implements HotelDataService {
 	}
 
 	/**
-	 *
+	 * 得到哈希值
 	 * @param hotelScope
 	 * @return
 	 */
@@ -348,7 +333,7 @@ public class HotelData implements HotelDataService {
 	}
 
 	/**
-	 *
+	 * 得到满足地址搜索条件的酒店信息列表
 	 * @param col
 	 * @param row
 	 * @return
@@ -427,41 +412,6 @@ public class HotelData implements HotelDataService {
 		}
 	}
 
-	private void out(){
-		try {
-			wBook.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		book.close();
-	}
-//	private boolean add(int col, int row, HotelPO hotel){
-//		return true;
-//	}
-//
-//	private ArrayList<HotelPO> getHotelListByRow(int row){
-//
-//	}
-//
-//	private int findLocation(int row, double score, int level){
-//		ArrayList<HotelPO> hotelTree = getHotelListByRow(row);
-//		for(int i=1;i<hotelTree.size();){
-//			double theSocre = hotelTree.get(i).getScore();
-//			double nextLeftScore = hotelTree.get(2*i).getScore();
-//			double nextRightScore = hotelTree.get(2*i+1).getScore();
-//			if(score>theSocre) {
-//				if(score<nextRightScore)i=2*i+1;
-//			}
-//			if(score<theSocre) i=2*i;
-//			if(score==theSocre){
-//				if(level>hotelTree.get(i).getLevel()){
-//					i=2*i+1;
-//				}
-//				else{
-//					i=2*i;
-//				}
-//			}
-//		}
-//	}
+
 
 }

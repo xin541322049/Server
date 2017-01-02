@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
+ * 用于管理promotion数据的类
+ * @author 张新悦
  * Created by apple on 2016/12/2.
  */
 public class PromotionData implements PromotionDataService {
@@ -29,6 +31,11 @@ public class PromotionData implements PromotionDataService {
 	private WritableWorkbook wBook;
 	private WritableSheet wSheet;
 
+	/**
+	 * 根据ID查找策略信息
+	 * @param promotionID
+	 * @return
+	 */
 	public PromotionPO getPromotion(String promotionID) {
 		createSheet();
 		int col = 0;
@@ -44,13 +51,18 @@ public class PromotionData implements PromotionDataService {
 		return getPromotionByRow(row);
 	}
 
+	/**
+	 * 增加策略
+	 * @param promotion
+	 * @return
+	 */
 	public boolean addPromotion(PromotionPO promotion) {
 		createWritableSheet();
 		int col = 0;
 		int row = hash(promotion.getPromotionID());
 		if(wSheet.getCell(col, row).getContents()!=""&&!wSheet.getCell(col, row).getContents().equals("-1")){
 			close();
-			return false;  //The promotion with the same ID has already existed.
+			return false;                                          //The promotion with the same ID has already existed.
 		}
 		Label promotionID = new Label(col, row, promotion.getPromotionID());
 		col++;
@@ -154,6 +166,11 @@ public class PromotionData implements PromotionDataService {
 		return true;
 	}
 
+	/**
+	 * 删除策略
+	 * @param promotionID
+	 * @return
+	 */
 	public boolean deletePromotion(String promotionID) {
 		createWritableSheet();
 		int col = 0;
@@ -173,6 +190,11 @@ public class PromotionData implements PromotionDataService {
 		return true;
 	}
 
+	/**
+	 * 更新策略信息
+	 * @param promotion
+	 * @return
+	 */
 	public boolean updatePromotion(PromotionPO promotion) {
 		createWritableSheet();
 		int col = 0;
@@ -281,6 +303,10 @@ public class PromotionData implements PromotionDataService {
 		return true;
 	}
 
+	/**
+	 * 得到策略信息列表
+	 * @return
+	 */
 	public ArrayList<PromotionPO> getPromotionList() {
 		createSheet();
 		int rows = sheet.getRows();
@@ -299,7 +325,7 @@ public class PromotionData implements PromotionDataService {
 	}
 
 	/**
-	 *
+	 * 得到可用的新增策略的ID
 	 * @return
 	 */
 	public String getAvailablePromotionID() {
@@ -315,7 +341,7 @@ public class PromotionData implements PromotionDataService {
 	}
 
 	/**
-	 *
+	 * 关闭excel文档IO流
 	 */
 	private void close() {
 		try {
@@ -368,11 +394,21 @@ public class PromotionData implements PromotionDataService {
 		}
 	}
 
+	/**
+	 * 得到哈希值
+	 * @param ID
+	 * @return
+	 */
 	private int hash(String ID){
 		int hashResult = Integer.parseInt(ID);
 		return hashResult;
 	}
 
+	/**
+	 * 得到某个 promotion
+	 * @param row
+	 * @return
+	 */
 	private PromotionPO getPromotionByRow(int row){
 		int col = 0;
 		Date startDate = null;

@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
+ * 用于帮助酒店工作人员管理订单信息的类
+ * @author 张新悦
  * Created by apple on 2016/12/1.
  */
 public class OrderDataForH implements OrderDataService, Serializable{
@@ -25,7 +27,7 @@ public class OrderDataForH implements OrderDataService, Serializable{
 	private Sheet sheet;
 	private static final long serialVersionUID = -6833877079313718314L;   //序列号
 	/**
-	 *
+	 * 增加订单
 	 * @param order
 	 * @return
 	 */
@@ -39,7 +41,7 @@ public class OrderDataForH implements OrderDataService, Serializable{
 	}
 
 	/**
-	 *
+	 * 更新订单
 	 * @param order
 	 * @return
 	 */
@@ -50,7 +52,7 @@ public class OrderDataForH implements OrderDataService, Serializable{
 	}
 
 	/**
-	 *
+	 * 撤销订单
 	 * @param orderID
 	 * @return
 	 */
@@ -61,7 +63,7 @@ public class OrderDataForH implements OrderDataService, Serializable{
 	}
 
 	/**
-	 *
+	 * 将订单置为异常
 	 * @param orderID
 	 * @return
 	 */
@@ -72,7 +74,7 @@ public class OrderDataForH implements OrderDataService, Serializable{
 	}
 
 	/**
-	 *
+	 * 恢复订单
 	 * @param orderID
 	 * @param recover
 	 * @return
@@ -85,7 +87,7 @@ public class OrderDataForH implements OrderDataService, Serializable{
 
 
 	/**
-	 *
+	 * 根据订单号得到订单
 	 * @param orderID
 	 * @return
 	 */
@@ -104,7 +106,7 @@ public class OrderDataForH implements OrderDataService, Serializable{
 	}
 
 	/**
-	 *
+	 * 根据酒店ID得到该酒店的所有订单
 	 * @param userID
 	 * @return
 	 */
@@ -126,7 +128,7 @@ public class OrderDataForH implements OrderDataService, Serializable{
 	}
 
 	/**
-	 *
+	 * 根据ID得到该酒店所有已执行订单
 	 * @param userID
 	 * @return
 	 */
@@ -145,7 +147,7 @@ public class OrderDataForH implements OrderDataService, Serializable{
 	}
 
 	/**
-	 *
+	 * 根据ID得到该酒店所有未执行订单
 	 * @param userID
 	 * @return
 	 */
@@ -164,7 +166,7 @@ public class OrderDataForH implements OrderDataService, Serializable{
 	}
 
 	/**
-	 *
+	 * 根据ID得到该酒店所有异常订单
 	 * @param userID
 	 * @return
 	 */
@@ -183,7 +185,7 @@ public class OrderDataForH implements OrderDataService, Serializable{
 	}
 
 	/**
-	 *
+	 * 根据ID得到该酒店所有撤销订单
 	 * @param userID
 	 * @return
 	 */
@@ -202,7 +204,7 @@ public class OrderDataForH implements OrderDataService, Serializable{
 	}
 
 	/**
-	 *
+	 * 得到哈希值
 	 * @param ID
 	 * @return
 	 */
@@ -213,7 +215,7 @@ public class OrderDataForH implements OrderDataService, Serializable{
 	}
 
 	/**
-	 *
+	 * 创建读文件IO流
 	 */
 	private void createSheet(){
 		try {
@@ -227,7 +229,7 @@ public class OrderDataForH implements OrderDataService, Serializable{
 	}
 
 	/**
-	 *
+	 * 得到某个位置的订单
 	 * @param col
 	 * @param row
 	 * @return

@@ -14,6 +14,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
+ * 用于帮助网站营销人员管理订单数据的类
+ * @author 张新悦
  * Created by apple on 2016/12/1.
  */
 public class OrderDataForS implements OrderDataService ,Serializable{
@@ -30,7 +32,7 @@ public class OrderDataForS implements OrderDataService ,Serializable{
 	}
 
 	/**
-	 *
+	 * 更新订单信息
 	 * @param order
 	 * @return
 	 */
@@ -55,7 +57,7 @@ public class OrderDataForS implements OrderDataService ,Serializable{
 	}
 
 	/**
-	 *
+	 * 得到当天所有异常订单的信息列表
 	 * @param userID
 	 * @return
 	 */
@@ -105,7 +107,7 @@ public class OrderDataForS implements OrderDataService ,Serializable{
 	}
 
 	/**
-	 *
+	 * 得到所有订单
 	 * @param row
 	 * @return
 	 */
@@ -120,7 +122,7 @@ public class OrderDataForS implements OrderDataService ,Serializable{
 	}
 
 	/**
-	 *
+	 * 得到某个订单
 	 * @param col
 	 * @param row
 	 * @return
@@ -205,7 +207,7 @@ public class OrderDataForS implements OrderDataService ,Serializable{
 	}
 
 	/**
-	 *
+	 * 创建读文件流
 	 */
 	private void createSheet(){
 		try {

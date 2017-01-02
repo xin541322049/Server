@@ -17,7 +17,7 @@ import java.util.Date;
 
 /**
  * 控制creditChange数据
- * Created by apple on 2016/12/3.
+ * Created by 张新悦 on 2016/12/3.
  */
 public class CreditData implements CreditDataService {
 
@@ -85,7 +85,7 @@ public class CreditData implements CreditDataService {
 	}
 
 	/**
-	 *
+	 * 得到用户当前信用值
 	 * @param memberID
 	 * @return
 	 */
@@ -101,7 +101,7 @@ public class CreditData implements CreditDataService {
 	}
 
 	/**
-	 *
+	 * 得到用户信用记录
 	 * @param memberID
 	 * @return
 	 */
@@ -121,7 +121,7 @@ public class CreditData implements CreditDataService {
 	}
 
 	/**
-	 *
+	 * 设置用户当前信用值
 	 * @param memberID
 	 * @param credit
 	 * @return
@@ -152,7 +152,7 @@ public class CreditData implements CreditDataService {
 	}
 
 	/**
-	 *
+	 * 关闭excel文档输入流
 	 */
 	private void close() {
 		try {
@@ -164,7 +164,7 @@ public class CreditData implements CreditDataService {
 	}
 
 	/**
-	 *
+	 * 得到哈希值
 	 * @param memberID
 	 * @return
 	 */
@@ -174,7 +174,7 @@ public class CreditData implements CreditDataService {
 	}
 
 	/**
-	 *
+	 * 得到某条信用记录
 	 * @param col
 	 * @param row
 	 * @return
@@ -200,7 +200,7 @@ public class CreditData implements CreditDataService {
 	}
 
 	/**
-	 *
+	 * 创建写文档IO流
 	 */
 	private void createWritableSheet(){
 		try {
@@ -215,7 +215,7 @@ public class CreditData implements CreditDataService {
 	}
 
 	/**
-	 *
+	 * 创建读文档IO流
 	 */
 	private void createSheet(){
 		try {

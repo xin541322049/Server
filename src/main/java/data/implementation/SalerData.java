@@ -26,8 +26,12 @@ public class SalerData implements SalerDataService {
 	WritableSheet wSheet;
 	int dataSize = 5;
 	int lengthOfID = 4;
-	
-	//@Override
+
+	/**
+	 * 增加网站营销人员信息
+	 * @param saler
+	 * @return
+	 */
 	public boolean addSaler(SalerPO saler) {
 		// TODO Auto-generated method stub
 		createWritableSheet();
@@ -66,7 +70,11 @@ public class SalerData implements SalerDataService {
 		return true;
 	}
 
-	//@Override
+	/**
+	 * 删除网站营销人员信息
+	 * @param salerID
+	 * @return
+	 */
 	public boolean deleteSaler(String salerID) {
 		// TODO Auto-generated method stub
 		createWritableSheet();
@@ -93,7 +101,11 @@ public class SalerData implements SalerDataService {
 		return true;
 	}
 
-	//@Override
+	/**
+	 * 更新网站营销人员信息
+	 * @param saler
+	 * @return
+	 */
 	public boolean updateSaler(SalerPO saler) {
 		// TODO Auto-generated method stub
 		createWritableSheet();
@@ -129,7 +141,11 @@ public class SalerData implements SalerDataService {
 		return true;
 	}
 
-	//@Override
+	/**
+	 * 根据ID得到营销人员信息
+	 * @param ID
+	 * @return
+	 */
 	public SalerPO getSaler(String ID) {
 		// TODO Auto-generated method stub
 		createSheet();
@@ -160,6 +176,10 @@ public class SalerData implements SalerDataService {
 		return null;    //Did not find the saler
 	}
 
+	/**
+	 * 得到可用的新增营销人员ID
+	 * @return
+	 */
 	public String getAvailableSalerID() {
 		createSheet();
 		int sum = sheet.getRows();
@@ -177,7 +197,7 @@ public class SalerData implements SalerDataService {
 	}
 
 	/**
-	 *
+	 * 关闭文件IO流
 	 */
 	private void close() {
 		try {
